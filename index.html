@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Watch Button Centered</title>
+    <title>Watch Video</title>
     <style>
         body {
             margin: 0;
@@ -34,14 +34,86 @@
         button:active {
             background-color: #003f7f;
         }
+
+        /* Modal styles */
+        #videoModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        #videoModal video {
+            max-width: 80%;
+            max-height: 80%;
+            border-radius: 8px;
+        }
+
+        #videoModal .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <button id="watchButton">Watch</button>
 
+    <!-- Video Modal -->
+    <div id="videoModal">
+        <span class="close">&times;</span>
+        <video id="videoPlayer" controls></video>
+    </div>
+
     <script>
-        document.getElementById('watchButton').addEventListener('click', function () {
-            alert('Button clicked!');
+        const button = document.getElementById('watchButton');
+        const modal = document.getElementById('videoModal');
+        const videoPlayer = document.getElementById('videoPlayer');
+        const closeBtn = document.querySelector('.close');
+
+        // Load video link from video.txt
+        async function loadVideo() {
+            try {
+                const response = await fetch('video.txt');
+                if (!response.ok) {
+                    throw new Error('Failed to load video link.');
+                }
+                const videoUrl = await response.text();
+                videoPlayer.src = videoUrl.trim(); // Set the video source
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        }
+
+        // Show modal and play video
+        button.addEventListener('click', async () => {
+            await loadVideo();
+            modal.style.display = 'flex';
+            videoPlayer.play();
+        });
+
+        // Close modal
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+            videoPlayer.pause();
+            videoPlayer.currentTime = 0;
+        });
+
+        // Close modal when clicking outside the video
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                videoPlayer.pause();
+                videoPlayer.currentTime = 0;
+            }
         });
     </script>
 </body>

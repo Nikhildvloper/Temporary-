@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enhanced Video Player</title>
+    <title>Video Player</title>
     <style>
         body {
             margin: 0;
@@ -15,74 +15,30 @@
             font-family: Arial, sans-serif;
         }
 
-        button {
-            padding: 15px 30px;
-            font-size: 20px;
-            color: white;
-            background-color: #007BFF;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-            transform: scale(1.1);
-        }
-
-        button:active {
-            background-color: #003f7f;
-        }
-
-        /* Modal styles */
-        #videoModal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #videoModal .video-container {
+        .video-container {
             position: relative;
-            max-width: 90%;
-            max-height: 80%;
-            width: 800px;
+            width: 90%;
+            max-width: 800px;
             background: #000;
             border-radius: 12px;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
-        #videoModal video {
+        video {
             width: 100%;
             height: auto;
         }
 
-        #videoModal .close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 24px;
-            color: white;
+        .progress-bar {
+            position: relative;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.3);
             cursor: pointer;
         }
 
-        #videoModal .progress-bar {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        #videoModal .progress-bar .progress {
+        .progress {
             width: 0;
             height: 100%;
             background: #007BFF;
@@ -91,27 +47,17 @@
     </style>
 </head>
 <body>
-    <button id="watchButton">Watch</button>
-
-    <!-- Video Modal -->
-    <div id="videoModal">
-        <div class="video-container">
-            <span class="close">&times;</span>
-            <video id="videoPlayer" controls></video>
-            <div class="progress-bar">
-                <div class="progress"></div>
-            </div>
+    <div class="video-container">
+        <video id="videoPlayer" controls></video>
+        <div class="progress-bar">
+            <div class="progress"></div>
         </div>
     </div>
 
     <script>
-        const button = document.getElementById('watchButton');
-        const modal = document.getElementById('videoModal');
         const videoPlayer = document.getElementById('videoPlayer');
-        const closeBtn = document.querySelector('.close');
         const progressBar = document.querySelector('.progress-bar');
         const progress = document.querySelector('.progress');
-        let isSwiping = false, startX = 0;
 
         // Load video link from video.txt
         async function loadVideo() {
@@ -122,33 +68,14 @@
                 }
                 const videoUrl = await response.text();
                 videoPlayer.src = videoUrl.trim();
+                videoPlayer.play().catch((error) => {
+                    console.error('Error playing video:', error);
+                    alert('Unable to autoplay video. Please click play manually.');
+                });
             } catch (error) {
                 alert('Error: ' + error.message);
             }
         }
-
-        // Show modal and play video
-        button.addEventListener('click', async () => {
-            await loadVideo();
-            modal.style.display = 'flex';
-            videoPlayer.play();
-        });
-
-        // Close modal
-        closeBtn.addEventListener('click', () => {
-            modal.style.display = 'none';
-            videoPlayer.pause();
-            videoPlayer.currentTime = 0;
-        });
-
-        // Close modal when clicking outside the video
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-                videoPlayer.pause();
-                videoPlayer.currentTime = 0;
-            }
-        });
 
         // Update progress bar
         videoPlayer.addEventListener('timeupdate', () => {
@@ -156,42 +83,14 @@
             progress.style.width = `${percentage}%`;
         });
 
-        // Add swipe functionality for seeking
-        videoPlayer.addEventListener('mousedown', (e) => {
-            isSwiping = true;
-            startX = e.clientX;
+        // Allow user to seek by clicking the progress bar
+        progressBar.addEventListener('click', (e) => {
+            const clickPosition = (e.offsetX / progressBar.offsetWidth) * videoPlayer.duration;
+            videoPlayer.currentTime = clickPosition;
         });
 
-        videoPlayer.addEventListener('mouseup', () => {
-            isSwiping = false;
-        });
-
-        videoPlayer.addEventListener('mousemove', (e) => {
-            if (isSwiping) {
-                const diffX = e.clientX - startX;
-                const seekTime = (diffX / videoPlayer.offsetWidth) * videoPlayer.duration;
-                videoPlayer.currentTime = Math.min(Math.max(videoPlayer.currentTime + seekTime, 0), videoPlayer.duration);
-                startX = e.clientX; // Update for smoother seek
-            }
-        });
-
-        videoPlayer.addEventListener('touchstart', (e) => {
-            isSwiping = true;
-            startX = e.touches[0].clientX;
-        });
-
-        videoPlayer.addEventListener('touchend', () => {
-            isSwiping = false;
-        });
-
-        videoPlayer.addEventListener('touchmove', (e) => {
-            if (isSwiping) {
-                const diffX = e.touches[0].clientX - startX;
-                const seekTime = (diffX / videoPlayer.offsetWidth) * videoPlayer.duration;
-                videoPlayer.currentTime = Math.min(Math.max(videoPlayer.currentTime + seekTime, 0), videoPlayer.duration);
-                startX = e.touches[0].clientX; // Update for smoother seek
-            }
-        });
+        // Load video on page load
+        window.onload = loadVideo;
     </script>
 </body>
 </html>

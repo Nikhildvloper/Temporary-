@@ -1,84 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dual Audio MKV Player</title>
-  <!-- Video.js CSS -->
-  <link href="https://vjs.zencdn.net/8.0.4/video-js.css" rel="stylesheet">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin: 20px;
-    }
-    .video-js {
-      width: 80%;
-      max-width: 800px;
-      margin: 20px auto;
-    }
-    select {
-      margin: 10px;
-      padding: 5px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Video with MX Player</title>
 </head>
 <body>
-  <h1>Dual Audio MKV Player</h1>
-  <video
-    id="moviePlayer"
-    class="video-js vjs-default-skin"
-    controls
-    preload="auto"
-    data-setup='{}'>
-    <source src="https://pub-970ab6fc32b549798ee00c22914628fa.r2.dev/IronMan.2008.480p.Hindi.English.Vegamovies.NL.mkv" type="video/x-matroska">
-    Your browser does not support MKV playback.
-  </video>
-  <label for="audioTrack">Choose Audio Track:</label>
-  <select id="audioTrack">
-    <!-- Options will be dynamically populated -->
-  </select>
-
-  <!-- Video.js JavaScript -->
-  <script src="https://vjs.zencdn.net/8.0.4/video.min.js"></script>
-  <script>
-    const videoElement = document.getElementById('moviePlayer');
-    const audioTrackSelect = document.getElementById('audioTrack');
-
-    videoElement.addEventListener('loadedmetadata', () => {
-      const audioTracks = videoElement.audioTracks;
-
-      // Check if the browser supports audioTracks API
-      if (!audioTracks) {
-        alert("Your browser does not support switching audio tracks.");
-        return;
-      }
-
-      // Populate the audio track options
-      for (let i = 0; i < audioTracks.length; i++) {
-        const option = document.createElement('option');
-        option.value = i;
-        option.textContent = `Track ${i + 1}`;
-        audioTrackSelect.appendChild(option);
-      }
-
-      // Set the default track
-      if (audioTracks.length > 0) {
-        audioTracks[0].enabled = true;
-      }
-    });
-
-    // Handle track change
-    audioTrackSelect.addEventListener('change', () => {
-      const selectedTrackIndex = audioTrackSelect.value;
-      const audioTracks = videoElement.audioTracks;
-
-      if (audioTracks) {
-        for (let i = 0; i < audioTracks.length; i++) {
-          audioTracks[i].enabled = i === parseInt(selectedTrackIndex, 10);
-        }
-      }
-    });
-  </script>
+    <h1>Play Video in MX Player</h1>
+    <p>Click the link below to open the video in MX Player:</p>
+    <a href="intent://pub-970ab6fc32b549798ee00c22914628fa.r2.dev/IronMan.2008.480p.Hindi.English.Vegamovies.NL.mkv#Intent;package=com.mxtech.videoplayer.ad;scheme=https;end;">Play Video in MX Player</a>
 </body>
 </html>

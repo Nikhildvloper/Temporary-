@@ -1,13 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Play Video with MX Player</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Download Link</title>
 </head>
 <body>
-    <h1>Play Video in MX Player</h1>
-    <p>Click the link below to open the video in MX Player:</p>
-    <a href="intent://pub-970ab6fc32b549798ee00c22914628fa.r2.dev/IronMan.2008.480p.Hindi.English.Vegamovies.NL.mkv#Intent;package=com.mxtech.videoplayer.ad;scheme=https;end;">Play Video in MX Player</a>
+  <h1>Download Minecraft APK</h1>
+  <label for="versionInput">Enter Version:</label>
+  <input type="text" id="versionInput" placeholder="e.g., 1.22.3.4">
+  <button onclick="generateLink()">Generate Link</button>
+  <p id="downloadLink"></p>
+
+  <script>
+    function generateLink() {
+      const version = document.getElementById("versionInput").value;
+      if (version.trim()) {
+        // Replace dots with dashes for the URL path
+        const versionPath = version.replace(/\./g, "-");
+        const baseUrl = "https://mcpelife.com/files/minecraft-pe/";
+        const downloadUrl = `${baseUrl}${versionPath}/Minecraft-v${version}-arm64-v8a.apk`;
+        document.getElementById("downloadLink").innerHTML = `
+          <a href="${downloadUrl}" target="_blank">Download Minecraft v${version}</a>
+        `;
+      } else {
+        document.getElementById("downloadLink").innerHTML = "Please enter a valid version.";
+      }
+    }
+  </script>
 </body>
 </html>

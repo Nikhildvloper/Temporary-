@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Xbox Servers Link</title>
+</head>
+<body>
+  <h1>Download Minecraft Xbox Servers APK</h1>
+  <label for="versionInput">Enter Version:</label>
+  <input type="text" id="versionInput" placeholder="e.g., 1.21.44.01">
+  <button onclick="generateLink()">Generate Link</button>
+  <p id="downloadLink"></p>
+
+  <script>
+    function generateLink() {
+      const version = document.getElementById("versionInput").value;
+      if (version.trim()) {
+        // Replace dots with dashes for the URL path and filename
+        const versionPath = version.replace(/\./g, "-");
+        const baseUrl = "https://mcpelife.com/files/minecraft-pe/";
+        const downloadUrl = `${baseUrl}${versionPath}/minecraft-${versionPath}-xbox-servers.apk`;
+        document.getElementById("downloadLink").innerHTML = `
+          <a href="${downloadUrl}" target="_blank">Download Minecraft v${version} (Xbox Servers)</a>
+        `;
+      } else {
+        document.getElementById("downloadLink").innerHTML = "Please enter a valid version.";
+      }
+    }
+  </script>
+</body>
+</html>

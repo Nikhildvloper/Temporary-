@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dynamic Xbox Servers Link</title>
+  <title>Dynamic Minecraft Link</title>
 </head>
 <body>
-  <h1>Download Minecraft Xbox Servers APK</h1>
+  <h1>Download Minecraft APK</h1>
   <label for="versionInput">Enter Version:</label>
-  <input type="text" id="versionInput" placeholder="e.g., 1.21.44.01">
+  <input type="text" id="versionInput" placeholder="e.g., 1.21.60.24">
   <button onclick="generateLink()">Generate Link</button>
   <p id="downloadLink"></p>
 
@@ -16,12 +16,12 @@
     function generateLink() {
       const version = document.getElementById("versionInput").value;
       if (version.trim()) {
-        // Replace dots with dashes for the URL path and filename
-        const versionPath = version.replace(/\./g, "-");
+        // Replace dots with dashes for both the URL path and the filename
+        const versionDash = version.replace(/\./g, "-");
         const baseUrl = "https://mcpelife.com/files/minecraft-pe/";
-        const downloadUrl = `${baseUrl}${versionPath}/minecraft-${versionPath}-xbox-servers.apk`;
+        const downloadUrl = `${baseUrl}${versionDash}/Minecraft-v${versionDash}-arm64-v8a.apk`;
         document.getElementById("downloadLink").innerHTML = `
-          <a href="${downloadUrl}" target="_blank">Download Minecraft v${version} (Xbox Servers)</a>
+          <a href="${downloadUrl}" target="_blank">Download Minecraft v${version}</a>
         `;
       } else {
         document.getElementById("downloadLink").innerHTML = "Please enter a valid version.";

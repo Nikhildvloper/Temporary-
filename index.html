@@ -11,23 +11,50 @@
   <p id="downloadStatus"></p>
 
   <script>
-    async function getLatestVersionFromMcpeLife() {
+    // Function to fetch the latest version of Minecraft from the Google Play Store Scraper API
+    async function getLatestVersionFromAPI() {
+      const url = 'https://google-play-store-scraper-api.p.rapidapi.com/search-apps';
+      const headers = {
+        'Content-Type': 'application/json',
+        'x-rapidapi-host': 'google-play-store-scraper-api.p.rapidapi.com',
+        'x-rapidapi-key': '8186aa3783msh30a7369f2749cebp16081djsn6d03a2159d31',  // Replace with your API key
+      };
+
+      const data = {
+        "language": "en",
+        "country": "us",
+        "keyword": "minecraft"  // Searching for Minecraft
+      };
+
       try {
-        // Replace with the actual API or scraping logic for mcpelife.com
-        const response = await fetch("https://mcpelife.com/api/latest-version");
-        const data = await response.json();
-        return data.latestVersion; // Assuming the API returns { "latestVersion": "1.21.60.24" }
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: headers,
+          body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+        console.log(result);  // View the result to check the structure
+
+        // Find Minecraft app from the response and extract its version
+        const minecraftApp = result.results.find(app => app.appId === 'com.mojang.minecraftpe');
+        if (minecraftApp) {
+          return minecraftApp.version;
+        } else {
+          throw new Error("Minecraft app not found.");
+        }
       } catch (error) {
-        console.error("Error fetching the latest version:", error);
+        console.error("Error fetching Minecraft version:", error);
         return null;
       }
     }
 
+    // Function to handle the download button click event
     async function downloadLatestVersion() {
       const statusElement = document.getElementById("downloadStatus");
       statusElement.textContent = "Fetching the latest version...";
 
-      const latestVersion = await getLatestVersionFromMcpeLife();
+      const latestVersion = await getLatestVersionFromAPI();
 
       if (latestVersion) {
         const versionPath = latestVersion.replace(/\./g, "-");
@@ -47,6 +74,7 @@
       }
     }
 
+    // Add click event listener to the button
     document.getElementById("downloadButton").addEventListener("click", downloadLatestVersion);
   </script>
 </body>

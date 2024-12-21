@@ -3,71 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Direct Video Download</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            background-color: #f4f4f4;
-        }
-        .container {
-            text-align: center;
-            padding: 20px;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <title>Play Video with MX Player</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Download Video</h1>
-        <p>Click the button below to directly download the video:</p>
-        <button id="download-button">Download Video</button>
-    </div>
-
-    <script>
-        const videoUrl = "https://pub-fd0433d6d20048c0bfb4f903f44bb380.r2.dev/2_The.Incredible.Hulk.(2008).1080p.Dual.Audio.(Hin-Eng).Vegamovies.Nl.mkv";
-
-        document.getElementById("download-button").addEventListener("click", () => {
-            fetch(videoUrl)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    return response.blob();
-                })
-                .then(blob => {
-                    const url = window.URL.createObjectURL(blob);
-                    const a = document.createElement("a");
-                    a.style.display = "none";
-                    a.href = url;
-                    a.download = "The_Incredible_Hulk_2008.mp4"; // Set a custom filename
-                    document.body.appendChild(a);
-                    a.click();
-                    window.URL.revokeObjectURL(url);
-                })
-                .catch(error => {
-                    console.error("Error downloading the file:", error);
-                });
-        });
-    </script>
+    <h1>Play Video in MX Player</h1>
+    <p>Click the link below to open the video in MX Player:</p>
+    <a href="mxplayer://https://pixeldra.in/api/file/P7WtVJoE">Play Video in MX Player</a>
 </body>
 </html>

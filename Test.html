@@ -22,34 +22,52 @@
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        a {
-            text-decoration: none;
+        button {
+            background-color: #007bff;
             color: white;
-            background: #007bff;
+            border: none;
             padding: 10px 20px;
             border-radius: 5px;
-            transition: background 0.3s;
+            cursor: pointer;
+            font-size: 16px;
         }
-        a:hover {
-            background: #0056b3;
+        button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Direct Video Download</h1>
-        <p>Click the button below to download the video:</p>
-        <a id="download-link" href="#" download>Download Video</a>
+        <h1>Download Video</h1>
+        <p>Click the button below to directly download the video:</p>
+        <button id="download-button">Download Video</button>
     </div>
 
     <script>
-        // Set the video URL
         const videoUrl = "https://pub-fd0433d6d20048c0bfb4f903f44bb380.r2.dev/2_The.Incredible.Hulk.(2008).1080p.Dual.Audio.(Hin-Eng).Vegamovies.Nl.mkv";
 
-        // Assign the URL to the download link and specify a filename
-        const downloadLink = document.getElementById("download-link");
-        downloadLink.href = videoUrl;
-        downloadLink.setAttribute("download", "The_Incredible_Hulk_2008.mp4");
+        document.getElementById("download-button").addEventListener("click", () => {
+            fetch(videoUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.blob();
+                })
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement("a");
+                    a.style.display = "none";
+                    a.href = url;
+                    a.download = "The_Incredible_Hulk_2008.mp4"; // Set a custom filename
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                })
+                .catch(error => {
+                    console.error("Error downloading the file:", error);
+                });
+        });
     </script>
 </body>
 </html>

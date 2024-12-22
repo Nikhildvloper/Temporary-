@@ -1,81 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Download Latest Minecraft APK</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MX Player Video Streamer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+    </style>
 </head>
 <body>
-  <h1>Download Latest Minecraft APK</h1>
-  <button id="downloadButton">Download Latest Version</button>
-  <p id="downloadStatus"></p>
+    <div class="container">
+        <h1>Stream Video on MX Player</h1>
+        <input type="text" id="videoUrl" placeholder="Enter video link here">
+        <button onclick="streamVideo()">Stream Video</button>
+        <div id="videoContainer">
+            <p>Video will appear here once you enter a link and click 'Stream Video'.</p>
+        </div>
+    </div>
 
-  <script>
-    // Function to fetch the latest version of Minecraft from the Google Play Store Scraper API
-    async function getLatestVersionFromAPI() {
-      const url = 'https://google-play-store-scraper-api.p.rapidapi.com/search-apps';
-      const headers = {
-        'Content-Type': 'application/json',
-        'x-rapidapi-host': 'google-play-store-scraper-api.p.rapidapi.com',
-        'x-rapidapi-key': '8186aa3783msh30a7369f2749cebp16081djsn6d03a2159d31',  // Replace with your API key
-      };
+    <script>
+        function streamVideo() {
+            const videoUrl = document.getElementById("videoUrl").value;
+            const videoContainer = document.getElementById("videoContainer");
 
-      const data = {
-        "language": "en",
-        "country": "us",
-        "keyword": "minecraft"  // Searching for Minecraft
-      };
+            if (!videoUrl) {
+                alert("Please enter a valid video link.");
+                return;
+            }
 
-      try {
-        const response = await fetch(url, {
-          method: 'POST',
-          headers: headers,
-          body: JSON.stringify(data)
-        });
-
-        const result = await response.json();
-        console.log(result);  // View the result to check the structure
-
-        // Find Minecraft app from the response and extract its version
-        const minecraftApp = result.results.find(app => app.appId === 'com.mojang.minecraftpe');
-        if (minecraftApp) {
-          return minecraftApp.version;
-        } else {
-          throw new Error("Minecraft app not found.");
+            videoContainer.innerHTML = `
+                <iframe 
+                    src="${videoUrl}" 
+                    allowfullscreen>
+                </iframe>`;
         }
-      } catch (error) {
-        console.error("Error fetching Minecraft version:", error);
-        return null;
-      }
-    }
-
-    // Function to handle the download button click event
-    async function downloadLatestVersion() {
-      const statusElement = document.getElementById("downloadStatus");
-      statusElement.textContent = "Fetching the latest version...";
-
-      const latestVersion = await getLatestVersionFromAPI();
-
-      if (latestVersion) {
-        const versionPath = latestVersion.replace(/\./g, "-");
-        const downloadUrl = `https://mcpelife.com/files/minecraft-pe/${versionPath}/Minecraft-v${versionPath}-arm64-v8a.apk`;
-
-        statusElement.textContent = `Downloading Minecraft v${latestVersion}...`;
-
-        // Automatically start the download
-        const anchor = document.createElement("a");
-        anchor.href = downloadUrl;
-        anchor.download = `Minecraft-v${latestVersion}-arm64-v8a.apk`;
-        anchor.click();
-
-        statusElement.textContent = `Download started for Minecraft v${latestVersion}.`;
-      } else {
-        statusElement.textContent = "Failed to fetch the latest version.";
-      }
-    }
-
-    // Add click event listener to the button
-    document.getElementById("downloadButton").addEventListener("click", downloadLatestVersion);
-  </script>
+    </script>
 </body>
 </html>

@@ -25,24 +25,28 @@
 </head>
 <body>
     <h1>Stream Video with MX Player</h1>
-    <p>Enter a valid video link below to play it in MX Player.</p>
+    <p>Enter a valid video link below to play it directly in MX Player.</p>
     <input type="text" id="videoUrl" placeholder="Enter video URL" value="https://pub-c69173c4df2b473598638d2943be9248.r2.dev/IronMan.2008.1080p.Hindi.English.Vegamovies.NL.mkv">
     <button onclick="playInMXPlayer()">Play in MX Player</button>
 
     <script>
         function playInMXPlayer() {
-            const videoUrl = document.getElementById("videoUrl").value;
+            const videoUrl = document.getElementById("videoUrl").value.trim();
 
             if (!videoUrl) {
                 alert("Please enter a valid video URL.");
                 return;
             }
 
-            // Construct the intent URL for MX Player
-            const intentUrl = `intent:${videoUrl}#Intent;action=android.intent.action.VIEW;type=video/*;package=com.mxtech.videoplayer.ad;end`;
+            // Generate the Intent URL to directly open MX Player
+            const intentUrl = `intent:${videoUrl}#Intent;action=android.intent.action.VIEW;type=video/*;scheme=https;package=com.mxtech.videoplayer.ad;end`;
 
-            // Redirect to the intent URL
-            window.location.href = intentUrl;
+            // Attempt to open MX Player with the video URL
+            try {
+                window.location.href = intentUrl;
+            } catch (error) {
+                alert("Error opening MX Player. Please ensure it is installed.");
+            }
         }
     </script>
 </body>

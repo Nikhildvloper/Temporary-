@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stream Video with MX Player</title>
+    <title>Stream Video in MX Player</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -26,7 +26,7 @@
 <body>
     <h1>Stream Video with MX Player</h1>
     <p>Enter a valid video link below to play it in MX Player.</p>
-    <input type="text" id="videoUrl" placeholder="Enter video URL">
+    <input type="text" id="videoUrl" placeholder="Enter video URL" value="https://pub-c69173c4df2b473598638d2943be9248.r2.dev/IronMan.2008.1080p.Hindi.English.Vegamovies.NL.mkv">
     <button onclick="playInMXPlayer()">Play in MX Player</button>
 
     <script>
@@ -38,8 +38,8 @@
                 return;
             }
 
-            // Open MX Player with the video link
-            const intentUrl = `intent:${videoUrl}#Intent;package=com.mxtech.videoplayer.ad;end`;
+            // Construct the intent URL for MX Player
+            const intentUrl = `intent:${videoUrl}#Intent;action=android.intent.action.VIEW;type=video/*;package=com.mxtech.videoplayer.ad;end`;
 
             // Redirect to the intent URL
             window.location.href = intentUrl;

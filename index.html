@@ -3,51 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stream Video in MX Player</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 20px;
-        }
-        input[type="text"] {
-            width: 80%;
-            padding: 10px;
-            font-size: 16px;
-            margin-bottom: 20px;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-    </style>
+    <title>Play Store Clone</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Stream Video with MX Player</h1>
-    <p>Enter a valid video link below to play it directly in MX Player.</p>
-    <input type="text" id="videoUrl" placeholder="Enter video URL" value="https://pub-c69173c4df2b473598638d2943be9248.r2.dev/IronMan.2008.1080p.Hindi.English.Vegamovies.NL.mkv">
-    <button onclick="playInMXPlayer()">Play in MX Player</button>
+    <header>
+        <div class="logo">
+            <h1>Play Store</h1>
+        </div>
+        <div class="search-container">
+            <input type="text" id="searchBar" placeholder="Search for apps, games, and more..." />
+            <button onclick="searchApp()">Search</button>
+        </div>
+    </header>
 
-    <script>
-        function playInMXPlayer() {
-            const videoUrl = document.getElementById("videoUrl").value.trim();
+    <div class="category-section">
+        <h2>Categories</h2>
+        <div class="categories">
+            <button class="category">Games</button>
+            <button class="category">Apps</button>
+            <button class="category">Movies</button>
+            <button class="category">Books</button>
+        </div>
+    </div>
 
-            if (!videoUrl) {
-                alert("Please enter a valid video URL.");
-                return;
-            }
+    <div class="app-list">
+        <h2>Featured Apps</h2>
+        <div class="app-card">
+            <img src="https://via.placeholder.com/150" alt="App Image" />
+            <div class="app-info">
+                <h3>App One</h3>
+                <p>Free</p>
+            </div>
+        </div>
+        <div class="app-card">
+            <img src="https://via.placeholder.com/150" alt="App Image" />
+            <div class="app-info">
+                <h3>App Two</h3>
+                <p>Free</p>
+            </div>
+        </div>
+        <div class="app-card">
+            <img src="https://via.placeholder.com/150" alt="App Image" />
+            <div class="app-info">
+                <h3>App Three</h3>
+                <p>Paid</p>
+            </div>
+        </div>
+    </div>
 
-            // Generate the Intent URL to directly open MX Player
-            const intentUrl = `intent:${videoUrl}#Intent;action=android.intent.action.VIEW;type=video/*;scheme=https;package=com.mxtech.videoplayer.ad;end`;
+    <footer>
+        <p>© 2025 Play Store Clone. All rights reserved.</p>
+    </footer>
 
-            // Attempt to open MX Player with the video URL
-            try {
-                window.location.href = intentUrl;
-            } catch (error) {
-                alert("Error opening MX Player. Please ensure it is installed.");
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

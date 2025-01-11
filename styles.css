@@ -4,6 +4,7 @@ body {
   font-family: Arial, sans-serif;
   background-color: #131313;
   color: #ffffff;
+  overflow-y: scroll;
 }
 
 /* Header */
@@ -44,15 +45,22 @@ body {
   margin-bottom: 15px;
 }
 
-/* Grid for apps */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+/* Scrollable container for horizontal scrolling */
+.scrollable-container {
+  display: flex;
   gap: 20px;
+  overflow-x: auto;
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+.scrollable-container::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome, Edge, and Safari */
 }
 
 .app {
   text-align: center;
+  flex: 0 0 auto; /* Prevent apps from shrinking */
+  width: 100px;
 }
 
 .app p {

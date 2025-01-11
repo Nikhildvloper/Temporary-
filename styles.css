@@ -144,6 +144,9 @@ body {
   text-align: center;
   color: #cfcfcf;
   font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .nav-item:hover {

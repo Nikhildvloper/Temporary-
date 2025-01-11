@@ -155,18 +155,3 @@ body {
   color: #cfcfcf;
   margin-bottom: 5px;
 }
-/* App Container */
-.app {
-  text-align: center;
-  flex: 0 0 auto; /* Prevent apps from shrinking */
-  width: 80px;
-  display: flex;
-  flex-direction: column; /* Arrange items vertically */
-  align-items: center; /* Center items horizontally */
-}
-
-.app p {
-  font-size: 14px;
-  margin-top: 10px;
-  color: #cfcfcf;
-}

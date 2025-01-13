@@ -70,61 +70,13 @@ body {
   color: #cfcfcf;
 }
 
-/* App Icons */
-.icon {
+/* App Icons (Images) */
+.app-icon {
   width: 60px;
   height: 60px;
   border-radius: 10px;
+  object-fit: cover;
   margin: 0 auto;
-  object-fit: cover; /* Ensure images maintain aspect ratio */
-}
-
-.snapchat {
-  background-color: #fffc00;
-}
-
-.hotstar {
-  background-color: #000080;
-}
-
-.zomato {
-  background-color: #ff0033;
-}
-
-.messenger {
-  background-color: #0084ff;
-}
-
-.instagram {
-  background: linear-gradient(45deg, #feda75, #d62976, #962fbf, #4f5bd5);
-}
-
-.facebook {
-  background-color: #1877f2;
-}
-
-.phonepe {
-  background-color: #6f3ef4;
-}
-
-.meesho {
-  background-color: #ff5d93;
-}
-
-.remini {
-  background-color: #ff0000;
-}
-
-.facebook-lite {
-  background-color: #0080ff;
-}
-
-.sharechat {
-  background-color: #ffcc00;
-}
-
-.x {
-  background-color: #000000;
 }
 
 /* Bottom Navigation */

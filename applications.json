@@ -3,28 +3,29 @@
     {
       "title": "Editors' Choice apps",
       "apps": [
-        { "name": "Snapchat", "class": "snapchat" },
-        { "name": "Disney+ Hotstar", "class": "hotstar" },
-        { "name": "Zomato: Food", "class": "zomato" },
-        { "name": "Messenger", "class": "messenger" }
+        { "name": "Snapchat" },
+        { "name": "Disney+ Hotstar" },
+        { "name": "Zomato: Food" },
+        { "name": "Messenger" },
+        { "name": "WhatsApp Messenger" }
       ]
     },
     {
       "title": "Popular apps",
       "apps": [
-        { "name": "Instagram Lite", "class": "instagram" },
-        { "name": "Facebook", "class": "facebook" },
-        { "name": "PhonePe UPI", "class": "phonepe" },
-        { "name": "Meesho", "class": "meesho" }
+        { "name": "Instagram Lite" },
+        { "name": "Facebook" },
+        { "name": "PhonePe UPI" },
+        { "name": "Meesho" }
       ]
     },
     {
       "title": "Social networking",
       "apps": [
-        { "name": "remini", "class": "remini" },
-        { "name": "Facebook Lite", "class": "facebook-lite" },
-        { "name": "ShareChat Trends", "class": "sharechat" },
-        { "name": "X", "class": "x" }
+        { "name": "Remini - AI Photo" },
+        { "name": "Facebook Lite" },
+        { "name": "ShareChat Trends" },
+        { "name": "X" }
       ]
     }
   ]

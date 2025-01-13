@@ -7,7 +7,6 @@
         { "name": "Disney+ Hotstar", "class": "hotstar" },
         { "name": "Zomato: Food", "class": "zomato" },
         { "name": "Messenger", "class": "messenger" }
-        { "name": "WhatsApp Messenger", "class": "WhatsApp" }
       ]
     },
     {

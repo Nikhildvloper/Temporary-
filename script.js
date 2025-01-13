@@ -30,13 +30,22 @@ function renderAppSections(sections) {
       const appDiv = document.createElement('div');
       appDiv.classList.add('app');
 
-      const iconDiv = document.createElement('div');
-      iconDiv.classList.add('icon', app.class);
+      // Add app icon (from icons directory)
+      const img = document.createElement('img');
+      img.src = `icon/${app.name}.png`;  // Directly using app name from JSON
+      img.alt = `${app.name} icon`;
+      img.classList.add('app-icon');
+      img.addEventListener('click', () => openAppPage(app.name));  // Add click event to icon
 
+      // Add app name
       const appName = document.createElement('p');
       appName.textContent = app.name;
+      appName.addEventListener('click', () => openAppPage(app.name));  // Add click event to app name
 
-      appDiv.appendChild(iconDiv);
+      // Add click event to the app border
+      appDiv.addEventListener('click', () => openAppPage(app.name));  // Add click event to app div
+
+      appDiv.appendChild(img);
       appDiv.appendChild(appName);
       scrollableContainer.appendChild(appDiv);
     });
@@ -44,4 +53,10 @@ function renderAppSections(sections) {
     sectionDiv.appendChild(scrollableContainer);
     appSections.appendChild(sectionDiv);
   });
+}
+
+// Open app page function
+function openAppPage(appName) {
+  // Redirect to app page
+  window.location.href = `apps/${appName}.html`;
 }

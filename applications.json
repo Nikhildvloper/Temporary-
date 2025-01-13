@@ -21,7 +21,7 @@
     {
       "title": "Social networking",
       "apps": [
-        { "name": "Remini - AI Photo", "class": "remini" },
+        { "name": "remini", "class": "remini" },
         { "name": "Facebook Lite", "class": "facebook-lite" },
         { "name": "ShareChat Trends", "class": "sharechat" },
         { "name": "X", "class": "x" }

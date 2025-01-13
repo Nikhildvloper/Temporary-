@@ -1,0 +1,32 @@
+{
+  "sections": [
+    {
+      "title": "Editors' Choice apps",
+      "apps": [
+        { "name": "Snapchat" },
+        { "name": "Disney+ Hotstar" },
+        { "name": "Zomato: Food" },
+        { "name": "Messenger" },
+        { "name": "WhatsApp Messenger" }
+      ]
+    },
+    {
+      "title": "Popular apps",
+      "apps": [
+        { "name": "Instagram Lite" },
+        { "name": "Facebook" },
+        { "name": "PhonePe UPI" },
+        { "name": "Meesho" }
+      ]
+    },
+    {
+      "title": "Social networking",
+      "apps": [
+        { "name": "Remini - AI Photo" },
+        { "name": "Facebook Lite" },
+        { "name": "ShareChat Trends" },
+        { "name": "X" }
+      ]
+    }
+  ]
+}

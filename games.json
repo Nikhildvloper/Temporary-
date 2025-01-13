@@ -1,0 +1,22 @@
+{
+  "sections": [
+    {
+      "title": "Popular Games",
+      "items": [
+        { "name": "PUBG Mobile" },
+        { "name": "Call of Duty" },
+        { "name": "Free Fire" },
+        { "name": "Candy Crush" }
+      ]
+    },
+    {
+      "title": "Top Strategy Games",
+      "items": [
+        { "name": "Clash of Clans" },
+        { "name": "Age of Empires" },
+        { "name": "Rise of Kingdoms" },
+        { "name": "Chess.com" }
+      ]
+    }
+  ]
+}

@@ -101,25 +101,25 @@ body {
   flex-direction: column;
   align-items: center;
   cursor: pointer;
-  padding: 8px 12px; /* Slightly reduced padding */
-  width: 25%; /* Reduced width */
+  padding: 8px 12px;
+  width: 25%;
   transition: all 0.3s ease;
-  border-radius: 20px; /* Keep rounded corners for the items */
-  margin: 0 5%; /* Add gap between sections */
+  border-radius: 20px;
+  margin: 0 5%;
 }
 
 /* Default icon size and length for all sections */
 .nav-item .nav-icon {
-  font-size: 28px; /* Increased icon size by default */
+  font-size: 28px;
   transition: color 0.3s ease;
 }
 
 /* Active Section Styles */
 .nav-item.active {
-  background-color: #333; /* Dark background for active section */
-  color: #ffffff; /* Change text color when active */
+  background-color: #0061f2; /* Play Store active color */
+  color: #ffffff;
 }
 
 .nav-item.active .nav-icon {
-  color: #ffffff; /* Change icon color to white when active */
+  color: #ffffff;
 }

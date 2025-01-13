@@ -101,23 +101,24 @@ body {
   flex-direction: column;
   align-items: center;
   cursor: pointer;
-  padding: 8px 0;
+  padding: 10px 20px; /* Increase padding to give enough space for icons */
+  width: 33.33%; /* Ensure all nav items have equal width */
   transition: all 0.3s ease;
+  border-radius: 20px; /* Keep rounded corners for the items */
 }
 
-/* Highlight the icon only when active */
+/* Default icon size and length for all sections */
 .nav-item .nav-icon {
+  font-size: 28px; /* Increase icon size by default */
   transition: color 0.3s ease;
 }
 
 /* Active Section Styles */
 .nav-item.active {
   background-color: #333; /* Dark background for active section */
-  border-radius: 20px; /* Curved corners for the active section */
-  padding: 12px 20px; /* Increase padding to make it longer */
+  color: #ffffff; /* Change text color when active */
 }
 
 .nav-item.active .nav-icon {
   color: #ffffff; /* Change icon color to white when active */
-  font-size: 28px; /* Increase icon size when active */
 }

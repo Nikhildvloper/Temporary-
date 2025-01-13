@@ -1,4 +1,4 @@
-// Fetch and render apps and games
+// Fetch and render data from JSON
 function fetchAndRenderData(jsonFile, containerId, folder) {
   fetch(jsonFile)
     .then(response => {
@@ -68,16 +68,16 @@ function openItemPage(folder, itemName) {
 fetchAndRenderData('./applications.json', 'app-sections', 'apps');
 
 // Navigation bar click handling
-document.querySelector('.bottom-navigation').addEventListener('click', (event) => {
-  const target = event.target.closest('.nav-item');
-  if (target) {
-    const navText = target.querySelector('span').textContent;
+document.querySelectorAll('.nav-item').forEach(navItem => {
+  navItem.addEventListener('click', (event) => {
+    const navText = navItem.querySelector('span').textContent;
+
     if (navText === 'Apps') {
       fetchAndRenderData('./applications.json', 'app-sections', 'apps');
     } else if (navText === 'Games') {
       fetchAndRenderData('./games.json', 'app-sections', 'games');
     }
-  }
+  });
 });
 
 // Disable text selection and clicks triggering search popups

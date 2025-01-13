@@ -1,15 +1,18 @@
-// Fetch and render apps from applications.json
-fetch('./applications.json')
-  .then(response => {
-    if (!response.ok) throw new Error('Failed to load applications.json');
-    return response.json();
-  })
-  .then(data => renderAppSections(data.sections))
-  .catch(error => console.error('Error:', error));
+// Fetch and render apps and games
+function fetchAndRenderData(jsonFile, containerId, folder) {
+  fetch(jsonFile)
+    .then(response => {
+      if (!response.ok) throw new Error(`Failed to load ${jsonFile}`);
+      return response.json();
+    })
+    .then(data => renderSections(data.sections, containerId, folder))
+    .catch(error => console.error('Error:', error));
+}
 
-// Render app sections dynamically
-function renderAppSections(sections) {
-  const appSections = document.getElementById('app-sections');
+// Render sections dynamically
+function renderSections(sections, containerId, folder) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = ''; // Clear previous content
 
   sections.forEach(section => {
     // Create section container
@@ -25,41 +28,57 @@ function renderAppSections(sections) {
     const scrollableContainer = document.createElement('div');
     scrollableContainer.classList.add('scrollable-container');
 
-    // Add apps
-    section.apps.forEach(app => {
-      const appDiv = document.createElement('div');
-      appDiv.classList.add('app');
+    // Add items
+    section.items.forEach(item => {
+      const itemDiv = document.createElement('div');
+      itemDiv.classList.add('app'); // Using "app" class for styling
 
-      // Add app icon (from icons directory)
+      // Add item icon (from icons directory)
       const img = document.createElement('img');
-      img.src = `icon/${app.name}.png`; // Directly using app name from JSON
-      img.alt = `${app.name} icon`;
+      img.src = `icon/${item.name}.png`; // Directly using item name from JSON
+      img.alt = `${item.name} icon`;
       img.classList.add('app-icon');
-      img.addEventListener('click', () => openAppPage(app.name)); // Add click event to icon
+      img.addEventListener('click', () => openItemPage(folder, item.name)); // Add click event to icon
 
-      // Add app name
-      const appName = document.createElement('p');
-      appName.textContent = app.name;
-      appName.addEventListener('click', () => openAppPage(app.name)); // Add click event to app name
+      // Add item name
+      const itemName = document.createElement('p');
+      itemName.textContent = item.name;
+      itemName.addEventListener('click', () => openItemPage(folder, item.name)); // Add click event to name
 
-      // Add click event to the app border
-      appDiv.addEventListener('click', () => openAppPage(app.name)); // Add click event to app div
+      // Add click event to the item border
+      itemDiv.addEventListener('click', () => openItemPage(folder, item.name)); // Add click event to item div
 
-      appDiv.appendChild(img);
-      appDiv.appendChild(appName);
-      scrollableContainer.appendChild(appDiv);
+      itemDiv.appendChild(img);
+      itemDiv.appendChild(itemName);
+      scrollableContainer.appendChild(itemDiv);
     });
 
     sectionDiv.appendChild(scrollableContainer);
-    appSections.appendChild(sectionDiv);
+    container.appendChild(sectionDiv);
   });
 }
 
-// Open app page function
-function openAppPage(appName) {
-  // Redirect to app page
-  window.location.href = `apps/${appName}.html`;
+// Open item page function
+function openItemPage(folder, itemName) {
+  // Redirect to item page
+  window.location.href = `${folder}/${itemName}.html`;
 }
+
+// Load apps by default
+fetchAndRenderData('./applications.json', 'app-sections', 'apps');
+
+// Navigation bar click handling
+document.querySelector('.bottom-navigation').addEventListener('click', (event) => {
+  const target = event.target.closest('.nav-item');
+  if (target) {
+    const navText = target.querySelector('span').textContent;
+    if (navText === 'Apps') {
+      fetchAndRenderData('./applications.json', 'app-sections', 'apps');
+    } else if (navText === 'Games') {
+      fetchAndRenderData('./games.json', 'app-sections', 'games');
+    }
+  }
+});
 
 // Disable text selection and clicks triggering search popups
 document.addEventListener('mousedown', (event) => {

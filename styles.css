@@ -101,15 +101,16 @@ body {
   flex-direction: column;
   align-items: center;
   cursor: pointer;
-  padding: 10px 20px; /* Increase padding to give enough space for icons */
-  width: 33.33%; /* Ensure all nav items have equal width */
+  padding: 8px 12px; /* Slightly reduced padding */
+  width: 25%; /* Reduced width */
   transition: all 0.3s ease;
   border-radius: 20px; /* Keep rounded corners for the items */
+  margin: 0 5%; /* Add gap between sections */
 }
 
 /* Default icon size and length for all sections */
 .nav-item .nav-icon {
-  font-size: 28px; /* Increase icon size by default */
+  font-size: 28px; /* Increased icon size by default */
   transition: color 0.3s ease;
 }
 

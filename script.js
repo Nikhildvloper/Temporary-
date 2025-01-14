@@ -1,7 +1,7 @@
-// Fetch and render apps from applications.json
-fetch('./applications.json')
+// Fetch and render apps from the selected section's JSON file
+fetch('./apps.json')
   .then(response => {
-    if (!response.ok) throw new Error('Failed to load applications.json');
+    if (!response.ok) throw new Error('Failed to load apps.json');
     return response.json();
   })
   .then(data => renderAppSections(data.sections))
@@ -10,6 +10,9 @@ fetch('./applications.json')
 // Render app sections dynamically
 function renderAppSections(sections) {
   const appSections = document.getElementById('app-sections');
+
+  // Clear existing sections before rendering new ones
+  appSections.innerHTML = '';
 
   sections.forEach(section => {
     // Create section container
@@ -57,7 +60,7 @@ function renderAppSections(sections) {
 
 // Open app page function
 function openAppPage(appName) {
-  // Redirect to app page
+  // Redirect to app page in the apps folder
   window.location.href = `apps/${appName}.html`;
 }
 
@@ -80,9 +83,18 @@ window.addEventListener('DOMContentLoaded', () => {
   setActiveSection('apps-nav');
 
   // Add event listeners to navigation items
-  document.getElementById('apps-nav').addEventListener('click', () => setActiveSection('apps-nav'));
-  document.getElementById('games-nav').addEventListener('click', () => setActiveSection('games-nav'));
-  document.getElementById('updates-nav').addEventListener('click', () => setActiveSection('updates-nav'));
+  document.getElementById('apps-nav').addEventListener('click', () => {
+    setActiveSection('apps-nav');
+    loadAppsFromSection('apps');
+  });
+  document.getElementById('games-nav').addEventListener('click', () => {
+    setActiveSection('games-nav');
+    loadAppsFromSection('games');
+  });
+  document.getElementById('tools-nav').addEventListener('click', () => {
+    setActiveSection('tools-nav');
+    loadAppsFromSection('tools');
+  });
 });
 
 // Function to set the active section
@@ -95,3 +107,38 @@ function setActiveSection(sectionId) {
   const activeNavItem = document.getElementById(sectionId);
   activeNavItem.classList.add('active');
 }
+
+// Function to load apps from the corresponding JSON based on the selected section
+function loadAppsFromSection(section) {
+  fetch(`./${section}.json`)
+    .then(response => {
+      if (!response.ok) throw new Error(`Failed to load ${section}.json`);
+      return response.json();
+    })
+    .then(data => renderAppSections(data.sections))
+    .catch(error => console.error('Error:', error));
+}
+// Focus on the search bar when clicked
+document.getElementById('search-bar').addEventListener('click', function() {
+  this.focus(); // Focus the input when it's clicked
+});
+
+// Search functionality: Store the search term and redirect to search page
+document.getElementById('search-bar').addEventListener('keydown', function(event) {
+  // When 'Enter' is pressed
+  if (event.key === 'Enter') {
+    const searchTerm = event.target.value.trim();  // Get the search term
+    if (searchTerm) {
+      // Store the search term in local storage
+      localStorage.setItem('searchTerm', searchTerm);
+
+      // Redirect to search.html page
+      window.location.href = 'search.html';
+    }
+  }
+});
+
+// Remove the cursor when the user navigates back (or goes back in history)
+window.addEventListener('popstate', function() {
+  document.getElementById('search-bar').blur();  // Remove focus from the search bar
+});

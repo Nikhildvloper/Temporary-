@@ -2,16 +2,16 @@
   "sections": [
     {
       "title": "Popular Games",
-      "items": [
+      "apps": [
         { "name": "PUBG Mobile" },
-        { "name": "Call of Duty" },
+        { "name": "Mini Militia" },
         { "name": "Free Fire" },
-        { "name": "Candy Crush" }
+        { "name": "Grand Theft Auto San Andreas" }
       ]
     },
     {
       "title": "Top Strategy Games",
-      "items": [
+      "apps": [
         { "name": "Clash of Clans" },
         { "name": "Age of Empires" },
         { "name": "Rise of Kingdoms" },

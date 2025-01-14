@@ -70,7 +70,7 @@ body {
 /* Scrollable container for horizontal scrolling */
 .scrollable-container {
   display: flex;
-  gap: 20px;
+  gap: 15px;
   overflow-x: auto;
   scrollbar-width: none; /* Hide scrollbar for Firefox */
   padding-bottom: 0px;
@@ -95,7 +95,7 @@ body {
 .app-icon {
   width: 75px;
   height: 75px;
-  border-radius: 20px;
+  border-radius: 15px;
   object-fit: cover;
   margin: 0 auto;
 }

@@ -93,8 +93,8 @@ body {
 }
 /* App Icons (Images) */
 .app-icon {
-  width: 75px;
-  height: 75px;
+  width: 70px;
+  height: 70px;
   border-radius: 10px;
   object-fit: cover;
   margin: 0 auto;

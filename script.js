@@ -131,7 +131,8 @@ document.getElementById('search-bar').addEventListener('keydown', function(event
     if (searchTerm) {
       // Store the search term in local storage
       localStorage.setItem('searchTerm', searchTerm);
-
+      // Clear the search bar
+      event.target.value = '';
       // Redirect to search.html page
       window.location.href = 'search.html';
     }

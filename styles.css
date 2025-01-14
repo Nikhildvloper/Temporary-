@@ -59,11 +59,12 @@ body {
 /* Sections */
 .section {
   margin: 20px;
+  margin-bottom: 70px; /* Space between the section and bottom navigation */
 }
 
 .section h2 {
   font-size: 18px;
-  margin-bottom: 50px;
+  margin-bottom: 15px;
 }
 
 /* Scrollable container for horizontal scrolling */

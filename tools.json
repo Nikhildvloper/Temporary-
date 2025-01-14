@@ -1,0 +1,22 @@
+{
+  "sections": [
+    {
+      "title": "Utility Tools",
+      "apps": [
+        { "name": "Task Manager" },
+        { "name": "File Explorer" },
+        { "name": "Disk Cleanup" },
+        { "name": "Backup Assistant" }
+      ]
+    },
+    {
+      "title": "System Tools",
+      "apps": [
+        { "name": "Antivirus" },
+        { "name": "Driver Updater" },
+        { "name": "System Monitor" },
+        { "name": "Network Analyzer" }
+      ]
+    }
+  ]
+}

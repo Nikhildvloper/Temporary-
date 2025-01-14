@@ -18,9 +18,7 @@ body {
   justify-content: space-between;
   align-items: center;
   background-color: #1b1b1b;
-  z-index: 10; /* Ensures it stays above other content */
-  border-bottom: 1px solid #333; /* Adds a separator below the header */
-  box-sizing: border-box; /* Ensures padding is included in the width */
+  z-index: 1000; /* Ensure it stays above other content */
 }
 
 .header h1 {
@@ -34,10 +32,6 @@ body {
   background-color: #2c2c2c;
   border-radius: 20px;
   padding: 5px 10px;
-  flex-grow: 1; /* Allow the search bar to grow */
-  max-width: 400px; /* Limit the search bar width */
-  margin-left: 20px; /* Add some space between the heading and the search bar */
-  box-sizing: border-box;
 }
 
 .search-bar {
@@ -47,7 +41,7 @@ body {
   color: #fff;
   font-size: 16px;
   padding: 5px;
-  width: 100%; /* Use the available width */
+  width: 200px;
   margin-right: 10px;
 }
 
@@ -63,12 +57,12 @@ body {
 
 /* Sections */
 .section {
-  margin: 100px 20px 20px; /* Adjusted margin for the fixed header */
+  margin: 80px 20px 20px; /* Adjusted top margin for fixed header */
 }
 
 .section h2 {
   font-size: 18px;
-  margin-bottom: 10px; /* Reduced space below headings */
+  margin-bottom: 15px;
 }
 
 /* Scrollable container for horizontal scrolling */

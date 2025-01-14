@@ -64,7 +64,7 @@ body {
 
 .section h2 {
   font-size: 18px;
-  margin-bottom: 0px;
+  margin-bottom: 15px;
 }
 
 /* Scrollable container for horizontal scrolling */
@@ -88,7 +88,7 @@ body {
 
 .app p {
   font-size: 14px;
-  margin-top: 10px;
+  margin-top: 0px;
   color: #cfcfcf;
 }
 /* App Icons (Images) */

@@ -93,9 +93,9 @@ body {
 }
 /* App Icons (Images) */
 .app-icon {
-  width: 65px;
-  height: 65px;
-  border-radius: 10px;
+  width: 75px;
+  height: 75px;
+  border-radius: 20px;
   object-fit: cover;
   margin: 0 auto;
 }

@@ -15,6 +15,10 @@
       "apps": [
         { "name": "YouTube" },
         { "name": "YouTube Music" },
+        { "name": "Google Photos" },
+        { "name": "MicroG" },
+        { "name": "Spotify Music and Podcasts" },
+        { "name": "X" },
         { "name": "ZArchiver Donate" }
       ]
     },

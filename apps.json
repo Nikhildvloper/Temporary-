@@ -11,12 +11,11 @@
       ]
     },
     {
-      "title": "Popular apps",
+      "title": "Mod apps",
       "apps": [
-        { "name": "Instagram Lite" },
-        { "name": "Facebook" },
-        { "name": "PhonePe UPI" },
-        { "name": "Meesho" }
+        { "name": "YouTube" },
+        { "name": "YouTube Music" },
+        { "name": "ZArchiver Donate" }
       ]
     },
     {

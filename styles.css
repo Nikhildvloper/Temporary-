@@ -9,11 +9,15 @@ body {
 /* Header */
 .header {
   position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #1b1b1b;
+  z-index: 1000; /* Ensure it stays above other content */
 }
 
 .header h1 {

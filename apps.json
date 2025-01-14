@@ -30,6 +30,15 @@
         { "name": "ShareChat Trends" },
         { "name": "X" }
       ]
+    },
+    {
+      "title": "Pc Applications",
+      "apps": [
+        { "name": "Visual Studio Code" },
+        { "name": "Python" },
+        { "name": "Du Meter" },
+        { "name": "Chrome" }
+      ]
     }
   ]
 }

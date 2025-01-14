@@ -7,6 +7,8 @@ body {
   overflow-y: scroll;
 }
 
+To make the search bar along with the "Apps" heading stay fixed at the top while scrolling, you need to apply the position: fixed; property to the .header. Here's the updated CSS for the .header:
+
 /* Header */
 .header {
   position: fixed;
@@ -19,6 +21,11 @@ body {
   align-items: center;
   background-color: #1b1b1b;
   z-index: 1000; /* Ensure it stays above other content */
+}
+
+/* To prevent content from hiding behind the fixed header */
+.section {
+  margin: 80px 20px 20px; /* Adjust the top margin to account for the fixed header height */
 }
 
 .header h1 {
@@ -57,7 +64,7 @@ body {
 
 /* Sections */
 .section {
-  margin: 80px 20px 20px; /* Adjusted top margin for fixed header */
+  margin: 20px;
 }
 
 .section h2 {
@@ -89,7 +96,6 @@ body {
   margin-top: 10px;
   color: #cfcfcf;
 }
-
 /* App Icons (Images) */
 .app-icon {
   width: 60px;

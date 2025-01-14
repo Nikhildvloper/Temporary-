@@ -7,7 +7,6 @@ body {
   overflow-y: scroll;
   padding-top: 60px; /* Give enough space for the fixed header */
 }
-
 /* Header */
 .header {
   padding: 20px;
@@ -15,6 +14,11 @@ body {
   justify-content: space-between;
   align-items: center;
   background-color: #1b1b1b;
+  position: fixed; /* Make the header fixed at the top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure it stays on top of other elements */
 }
 
 .header h1 {

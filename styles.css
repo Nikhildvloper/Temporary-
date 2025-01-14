@@ -58,8 +58,8 @@ body {
 
 /* Sections */
 .section {
-  margin: 20px;
-  margin-bottom: 70px; /* Space between the section and bottom navigation */
+  margin: 0px;
+  margin-bottom: 80px; /* Space between the section and bottom navigation */
 }
 
 .section h2 {

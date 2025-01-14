@@ -9,11 +9,17 @@ body {
 
 /* Header */
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #1b1b1b;
+  z-index: 10; /* Ensures it stays above other content */
+  border-bottom: 1px solid #333; /* Adds a separator below the header */
 }
 
 .header h1 {
@@ -52,7 +58,8 @@ body {
 
 /* Sections */
 .section {
-  margin: 20px;
+  margin: 80px 20px; /* Adjusted margin to account for the fixed header height */
+  padding-bottom: 60px; /* Adds space at the bottom to prevent content from being hidden under the navigation bar */
 }
 
 .section h2 {
@@ -84,6 +91,7 @@ body {
   margin-top: 10px;
   color: #cfcfcf;
 }
+
 /* App Icons (Images) */
 .app-icon {
   width: 60px;

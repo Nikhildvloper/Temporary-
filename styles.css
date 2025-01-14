@@ -5,6 +5,7 @@ body {
   background-color: #131313;
   color: #ffffff;
   overflow-y: scroll;
+  padding-top: 60px; /* Give enough space for the fixed header */
 }
 
 /* Header */
@@ -52,8 +53,6 @@ body {
 /* Sections */
 .section {
   margin: 20px;
-  /* Add padding to prevent content from being hidden by the bottom navigation */
-  padding-bottom: 70px;
 }
 .section h2 {
   font-size: 18px;

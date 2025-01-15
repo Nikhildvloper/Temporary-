@@ -27,8 +27,9 @@
       "title": "Social networking",
       "apps": [
         { "name": "Remini - AI Photo" },
-        { "name": "Facebook Lite" },
-        { "name": "ShareChat Trends" },
+        { "name": "Facebook" },
+        { "name": "Instagram" },
+        { "name": "LinkedIn" }
         { "name": "X" }
       ]
     },
@@ -38,7 +39,8 @@
         { "name": "Visual Studio Code" },
         { "name": "Python" },
         { "name": "Du Meter" },
-        { "name": "Chrome" }
+        { "name": "Chrome" },
+        { "name": "VLC media player" }
       ]
     }
   ]

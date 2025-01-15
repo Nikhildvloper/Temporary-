@@ -1,20 +1,20 @@
 {
   "sections": [
     {
-      "title": "Utility Tools",
+      "title": "Free Tools",
       "apps": [
-        { "name": "SmartPack Kernel Manager" },
+        { "name": "Ghost Phone" },
         { "name": "Internet Speed Meter" },
         { "name": "Bugjaeger Mobile ADB - USB OTG" },
         { "name": "VMOS Virtual Machine Operating System" }
       ]
     },
     {
-      "title": "System Tools",
+      "title": "Mod Tools",
       "apps": [
-        { "name": "Antivirus" },
-        { "name": "Driver Updater" },
-        { "name": "System Monitor" },
+        { "name": "VMOS Pro" },
+        { "name": "SmartPack Kernel Manager" },
+        { "name": "System Monitor Cpu Ram Battery" },
         { "name": "Network Analyzer" }
       ]
     }

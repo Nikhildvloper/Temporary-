@@ -3,7 +3,7 @@
     {
       "title": "Utility Tools",
       "apps": [
-        { "name": "Task Manager" },
+        { "name": "SmartPack Kernel Manager" },
         { "name": "File Explorer" },
         { "name": "Disk Cleanup" },
         { "name": "Backup Assistant" }
